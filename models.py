@@ -8,7 +8,6 @@ def get_conn():
     return conn
 
 def init_db():
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = get_conn()
     c = conn.cursor()
 
@@ -90,14 +89,16 @@ def init_db():
          view_time TEXT DEFAULT '',
          FOREIGN KEY (user_id) REFERENCES users(id))''')
 
-    # 初始化默认维度
+    # ===== 开始插入基础数据 =====
+
+    # 1. 初始化默认维度
     for d in DEFAULT_DIMENSIONS:
         c.execute('SELECT COUNT(*) FROM dimensions WHERE name=?', (d['name'],))
         if c.fetchone()[0] == 0:
             c.execute('INSERT INTO dimensions (name, element_a, element_b, style, sort_order) VALUES (?,?,?,?,?)',
                      (d['name'], d['element_a'], d['element_b'], d['style'], d['order']))
 
-    # 初始化16种性格类型（占位数据，后续可替换）
+    # 2. 初始化16种性格类型
     default_types = [
         ('INTJ', '建筑师', '独立的战略家', '#4A90D9', 1),
         ('INTP', '逻辑学家', '创新的思考者', '#9B59B6', 2),
@@ -119,12 +120,80 @@ def init_db():
     for t in default_types:
         c.execute('SELECT COUNT(*) FROM personality_types WHERE code=?', (t[0],))
         if c.fetchone()[0] == 0:
-            c.execute('INSERT INTO personality_types (code, nickname, description, poster_bg, detail_first_show, sort_order) VALUES (?,?,?,?,0,?)',
-                     t)
+            c.execute('INSERT INTO personality_types (code, nickname, description, poster_bg, detail_first_show, sort_order) VALUES (?,?,?,?,0,?)', t)
+
+    # 3. 插入测试题（从你旧的 seed_data.py 搬过来的逻辑）
+    # 获取维度 ID 映射
+    dims = {}
+    for row in c.execute('SELECT id, name FROM dimensions').fetchall():
+        dims[row['name']] = row['id']
+
+    # 插入 28题精简版
+    c.execute("INSERT OR IGNORE INTO tests (name, description, estimated_time, status, publish_time, sort_order) VALUES (?,?,?,?,datetime('now','localtime'),?)",
+        ('精简版（28题）', '佛系点 · 一首歌的时间', 3, 1, 1))
+    test1_id = c.execute("SELECT id FROM tests WHERE name='精简版（28题）'").fetchone()['id']
+
+    sample_questions_28 = [
+        (test1_id, 1, '参加一个大型派对后，你通常会？', dims['E-I'], 'positive', '感到精力充沛，想要继续社交', '感到疲惫，需要独处恢复'),
+        (test1_id, 2, '在陌生人群中，你是？', dims['E-I'], 'positive', '主动与陌生人交谈', '等待别人先搭话'),
+        (test1_id, 3, '独处对你来说是？', dims['E-I'], 'positive', '偶尔想要的放松', '最舒适的状态'),
+        (test1_id, 4, '你的朋友圈通常是？', dims['E-I'], 'positive', '广泛而多样', '小而精'),
+        (test1_id, 5, '在团队中，你更倾向于？', dims['E-I'], 'positive', '发言和带动讨论', '倾听和深思'),
+        (test1_id, 6, '你更喜欢的工作环境是？', dims['E-I'], 'positive', '开放式办公空间', '独立办公室'),
+        (test1_id, 7, '表达想法时，你通常是？', dims['E-I'], 'positive', '边想边说', '想好了再说'),
+        (test1_id, 8, '你更关注？', dims['S-N'], 'positive', '此时此刻发生的事', '未来的可能性'),
+        (test1_id, 9, '面对问题，你倾向于？', dims['S-N'], 'positive', '用已验证的方法解决', '尝试全新的思路'),
+        (test1_id, 10, '学习新知识时，你更喜欢？', dims['S-N'], 'positive', '看具体案例和实操', '先理解理论框架'),
+        (test1_id, 11, '你的记忆更擅长记？', dims['S-N'], 'positive', '具体的数字和事实', '概念和关键词'),
+        (test1_id, 12, '做决定时，你更依赖？', dims['S-N'], 'positive', '过往经验和数据', '直觉和第六感'),
+        (test1_id, 13, '你认为自己是？', dims['S-N'], 'positive', '脚踏实地的实用主义者', '充满想象力的理想主义者'),
+        (test1_id, 14, '阅读时你更偏好？', dims['S-N'], 'positive', '纪实类/商业类', '科幻类/哲学类'),
+        (test1_id, 15, '做决策时你更看重？', dims['T-F'], 'positive', '逻辑和公平', '情感和和谐'),
+        (test1_id, 16, '朋友找你倾诉，你会？', dims['T-F'], 'positive', '帮他分析问题给出建议', '先共情陪伴，让他感受支持'),
+        (test1_id, 17, '面对批评，你通常？', dims['T-F'], 'positive', '冷静分析是否合理', '容易感到受伤害'),
+        (test1_id, 18, '你认为自己更偏向？', dims['T-F'], 'positive', '客观理性', '温暖感性'),
+        (test1_id, 19, '在团队里，你更擅长？', dims['T-F'], 'positive', '发现逻辑漏洞', '维护团队氛围'),
+        (test1_id, 20, '购物时你更倾向于？', dims['T-F'], 'positive', '对比参数，追求性价比', '凭感觉，好看就买'),
+        (test1_id, 21, '你觉得"好人"应该是？', dims['T-F'], 'positive', '坚持原则不妥协', '总是照顾他人感受'),
+        (test1_id, 22, '你的生活方式更偏向？', dims['J-P'], 'positive', '有计划有条理', '随机应变灵活自由'),
+        (test1_id, 23, '面对截止日期，你通常？', dims['J-P'], 'positive', '提前规划好节奏', '最后冲刺完成'),
+        (test1_id, 24, '旅行时你更喜欢？', dims['J-P'], 'positive', '详细攻略', '说走就走随遇而安'),
+        (test1_id, 25, '工作空间通常是？', dims['J-P'], 'positive', '整洁有序', '看似混乱但你清楚在哪'),
+        (test1_id, 26, '做决定时，你倾向于？', dims['J-P'], 'positive', '尽快敲定', '保持开放继续观察'),
+        (test1_id, 27, '你的日程表通常？', dims['J-P'], 'positive', '排得满满当当', '只记重要事项'),
+        (test1_id, 28, '面对突发状况，你更觉得？', dims['J-P'], 'positive', '计划被打乱很烦', '随机应对挺有意思'),
+    ]
+    for q in sample_questions_28:
+        c.execute("INSERT OR IGNORE INTO questions (test_id, question_no, question_text, dimension_id, scoring_type, option_a, option_b) VALUES (?,?,?,?,?,?,?)", q)
+
+    # 插入 93题经典版 (占位)
+    import random
+    c.execute("INSERT OR IGNORE INTO tests (name, description, estimated_time, status, publish_time, sort_order) VALUES (?,?,?,?,datetime('now','localtime'),?)",
+        ('经典版（93题）', '认真点 · 深度探索', 10, 1, 2))
+    test2_id = c.execute("SELECT id FROM tests WHERE name='经典版（93题）'").fetchone()['id']
+
+    q_count = c.execute("SELECT COUNT(*) FROM questions WHERE test_id=?", (test2_id,)).fetchone()[0]
+    if q_count == 0: # 如果还没有题目才生成，防止重复
+        random.seed(42)
+        templates = {
+            'E-I': ['在大型聚会上你通常？', '新环境里你倾向？', '日常社交对你来说？', '长时间独处后你会？'],
+            'S-N': ['你更相信？', '解决问题的首选是？', '你被称为？', '你关注的重点是？'],
+            'T-F': ['做决定先看？', '你是一个？', '面对冲突你选择？', '朋友求助时你会？'],
+            'J-P': ['面对计划被打乱？', '你的周末通常？', '做事情的方式？', '待办清单存在吗？'],
+        }
+        q_no = 0
+        for dim_name in ['E-I', 'S-N', 'T-F', 'J-P']:
+            for i in range(24):
+                q_no += 1
+                if q_no > 93: break
+                template = random.choice(templates[dim_name])
+                scoring = random.choice(['positive', 'reverse'])
+                c.execute("INSERT INTO questions (test_id, question_no, question_text, dimension_id, scoring_type, option_a, option_b) VALUES (?,?,?,?,?,?,?)",
+                    (test2_id, q_no, f'{template} #{i+1}', dims[dim_name], scoring, 'A选项（待补充）', 'B选项（待补充）'))
 
     conn.commit()
     conn.close()
-    print("数据库初始化完成")
+    print("数据库初始化完成（含测试题库）")
 
 # ---------- 维度相关 ----------
 def get_dimensions():
