@@ -3,7 +3,7 @@ import os
 from config import DB_PATH, DEFAULT_DIMENSIONS
 
 def get_conn():
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect('/tmp/mbti.db')
     conn.row_factory = sqlite3.Row
     return conn
 
