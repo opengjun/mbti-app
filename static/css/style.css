@@ -1,4 +1,4 @@
-﻿﻿* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -257,18 +257,35 @@ body {
     display: flex;
     justify-content: flex-start;
 }
+.question-nav[hidden] { display: none; }
 .nav-prev-btn {
-    background: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background: #f3f4f7;
     border: none;
-    color: #888;
+    border-radius: 999px;
+    color: #6b7280;
     font-size: 13px;
+    line-height: 1;
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 6px 12px 6px 8px;
     font-family: inherit;
-    transition: color 0.15s;
+    transition: background-color 0.18s ease, color 0.18s ease;
 }
-.nav-prev-btn:hover { color: #667eea; }
-.nav-prev-btn:active { color: #5554a0; }
+.nav-prev-btn:hover { background: #e6e8ee; color: #4b5563; }
+.nav-prev-btn:active { background: #dcdfe8; }
+.nav-prev-btn:focus-visible { outline: 2px solid #667eea; outline-offset: 2px; }
+.nav-prev-icon {
+    width: 14px;
+    height: 14px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
 
 .progress-bar {
     height: 6px;

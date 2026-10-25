@@ -7,7 +7,12 @@
     </div>
 
     <div class="question-nav" id="questionNav" hidden>
-        <button type="button" class="nav-prev-btn" onclick="prevQuestion()">← 上一题</button>
+        <button type="button" class="nav-prev-btn" onclick="prevQuestion()" aria-label="上一题">
+            <svg class="nav-prev-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            <span>上一题</span>
+        </button>
     </div>
 
     <div id="questionArea">

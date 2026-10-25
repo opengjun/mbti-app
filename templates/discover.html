@@ -95,4 +95,20 @@
         <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">🔄 再测一次</a>
     </div>
 </div>
+
+<style>
+/* 底部操作按钮：限制最大宽度并水平居中 */
+.footer-buttons {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto 12px auto;
+    display: block;
+}
+.footer-buttons .btn-block {
+    margin: 0 auto 12px auto;
+}
+.footer-buttons .btn-block:last-child {
+    margin-bottom: 0;
+}
+</style>
 {% endblock %}

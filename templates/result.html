@@ -8,11 +8,10 @@
             <div class="avatar-section">
                 <div class="avatar avatar-user">
                     {% if user.get('avatar') %}
-                    <img src="{{ user.get('avatar') }}" alt="我的头像" onerror="this.style.display='none';this.parentNode.textContent='🎭'">
-                    {% elif user.get('nickname') %}
-                    {{ user.get('nickname', '?')[0] }}
+                    <img src="{{ user.get('avatar') }}" alt="我的头像"
+                         onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/default_avatar.png') }}';">
                     {% else %}
-                    🎭
+                    <img src="{{ url_for('static', filename='images/default_avatar.png') }}" alt="默认头像">
                     {% endif %}
                 </div>
                 <span class="nickname">{{ user.get('nickname') or '匿名用户' }}</span>
@@ -22,10 +21,10 @@
             <div class="personality-code">{{ personality_type }}</div>
             <div class="personality-nickname">{{ ptype_info.get('nickname', '神秘类型') }}</div>
 
-            {% if ptype_info.get('description') %}
+            {% if ptype_info.get('detail_content') %}
             <div class="personality-desc-card">
                 <div class="pd-label"><span class="pd-dot"></span>性格速览</div>
-                <p class="pd-text">{{ ptype_info.get('description', '') }}</p>
+                <p class="pd-text">{{ ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim | truncate(60, true) }}</p>
             </div>
             {% endif %}
         </div>
@@ -229,4 +228,20 @@
     📖 查看{{ personality_type }}详情 →
 </a>
 {% endif %}
+
+<style>
+/* 底部操作按钮：限制最大宽度并水平居中 */
+.footer-buttons {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto 12px auto;
+    display: block;
+}
+.footer-buttons .btn-block {
+    margin: 0 auto 12px auto;
+}
+.footer-buttons .btn-block:last-child {
+    margin-bottom: 0;
+}
+</style>
 {% endblock %}
