@@ -191,6 +191,15 @@ def init_db():
                 c.execute("INSERT INTO questions (test_id, question_no, question_text, dimension_id, scoring_type, option_a, option_b) VALUES (?,?,?,?,?,?,?)",
                     (test2_id, q_no, f'{template} #{i+1}', dims[dim_name], scoring, 'A选项（待补充）', 'B选项（待补充）'))
 
+    
+    # ===== 插入16种性格类型的详细解析 =====
+    try:
+        from import_details import TYPES_DETAIL
+        for code, detail_html in TYPES_DETAIL.items():
+            c.execute("UPDATE personality_types SET detail_content=? WHERE code=?", (detail_html, code))
+    except Exception as e:
+        print(f"导入详细解析失败: {e}")
+    
     conn.commit()
     conn.close()
     print("数据库初始化完成（含测试题库）")
