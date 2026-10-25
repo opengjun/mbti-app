@@ -1,0 +1,82 @@
+{
+  "INTJ": {
+    "study": "战略思维与系统架构",
+    "job": "系统架构师",
+    "growth": "INTJ成长"
+  },
+  "INTP": {
+    "study": "深度思考与独立研究",
+    "job": "算法工程师",
+    "growth": "INTP成长"
+  },
+  "ENTJ": {
+    "study": "领导力与决策训练",
+    "job": "运营总监",
+    "growth": "ENTJ成长"
+  },
+  "ENTP": {
+    "study": "创新方法与聚焦执行",
+    "job": "产品经理",
+    "growth": "ENTP成长"
+  },
+  "INFJ": {
+    "study": "共情边界与深度写作",
+    "job": "用户研究员",
+    "growth": "INFJ成长"
+  },
+  "INFP": {
+    "study": "自我表达与内容创作",
+    "job": "文案策划",
+    "growth": "INFP成长"
+  },
+  "ENFJ": {
+    "study": "教练式沟通与团队激励",
+    "job": "人力资源",
+    "growth": "ENFJ成长"
+  },
+  "ENFP": {
+    "study": "专注力与项目落地",
+    "job": "用户运营",
+    "growth": "ENFP成长"
+  },
+  "ISTJ": {
+    "study": "流程优化与数据分析",
+    "job": "项目经理",
+    "growth": "ISTJ成长"
+  },
+  "ISFJ": {
+    "study": "服务设计与用户关怀",
+    "job": "客户成功",
+    "growth": "ISFJ成长"
+  },
+  "ESTJ": {
+    "study": "组织管理与授权艺术",
+    "job": "供应链管理",
+    "growth": "ESTJ成长"
+  },
+  "ESFJ": {
+    "study": "团队运营与关系协调",
+    "job": "行政主管",
+    "growth": "ESFJ成长"
+  },
+  "ISTP": {
+    "study": "动手工程与故障排查",
+    "job": "运维工程师",
+    "growth": "ISTP成长"
+  },
+  "ISFP": {
+    "study": "视觉表达与审美提升",
+    "job": "视觉设计师",
+    "growth": "ISFP成长"
+  },
+  "ESTP": {
+    "study": "商业谈判与风险管理",
+    "job": "商务拓展",
+    "growth": "ESTP成长"
+  },
+  "ESFP": {
+    "study": "舞台表达与内容策划",
+    "job": "活动策划",
+    "growth": "ESFP成长"
+  }
+}

@@ -1,0 +1,61 @@
+{% extends "admin_base.html" %}
+{% block title %}数据统计{% endblock %}
+{% block admin_content %}
+<div class="admin-header">
+    <h1>📈 数据统计</h1>
+    <a href="{{ url_for('export_results') }}" class="btn btn-primary">⬇️ 导出数据 (JSON)</a>
+</div>
+
+<div style="display:flex; gap:16px; margin-bottom:16px;">
+    {% for t in tests %}
+    <div style="flex:1; padding:16px; background:#fff; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <div style="font-size:12px; color:#888;">{{ t['name'] }}</div>
+        <div style="font-size:24px; font-weight:700; color:#667eea; margin:4px 0;">{{ t['submit_count'] }}</div>
+        <div style="font-size:11px; color:#aaa;">提交次数</div>
+    </div>
+    {% endfor %}
+</div>
+
+<div style="overflow-x:auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>提交时间</th>
+                <th>昵称</th>
+                <th>测试类型</th>
+                <th>性格类型</th>
+                <th>性别</th>
+                <th>职龄</th>
+                <th>学历</th>
+                <th>进入方式</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in results %}
+            <tr>
+                <td>{{ r.get('submit_time', '') }}</td>
+                <td>{{ r.get('nickname', '匿名') }}</td>
+                <td>{{ r.get('test_name', '') }}</td>
+                <td><strong>{{ r.get('personality_type', '') }}</strong></td>
+                <td>
+                    {% set g = r.get('gender', '') %}
+                    {% if g == 'male' %}小哥哥
+                    {% elif g == 'female' %}小姐姐
+                    {% else %}-{% endif %}
+                </td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    {% set src = r.get('enter_source', '') %}
+                    {% if src == 'scan' %}扫码
+                    {% elif src == 'wechat_search' %}搜索
+                    {% else %}-{% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="8" style="text-align:center; color:#aaa; padding:40px;">暂无数据</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

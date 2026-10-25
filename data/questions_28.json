@@ -1,0 +1,254 @@
+[
+  {
+    "no": 1,
+    "text": "当你要外出一整天，你会",
+    "dim": "J-P",
+    "scoring": "positive",
+    "option_a": "计划你要做什么和在什么时候做",
+    "option_b": "说去就去",
+    "from_93": 1
+  },
+  {
+    "no": 2,
+    "text": "你是否",
+    "dim": "E-I",
+    "scoring": "positive",
+    "option_a": "容易让人了解",
+    "option_b": "难于让人了解",
+    "from_93": 8
+  },
+  {
+    "no": 3,
+    "text": "你认为自己是一个",
+    "dim": "J-P",
+    "scoring": "reverse",
+    "option_a": "较为有条理的人",
+    "option_b": "较为随兴所至的人",
+    "from_93": 2
+  },
+  {
+    "no": 4,
+    "text": "假如你是一位老师，你会选教",
+    "dim": "S-N",
+    "scoring": "positive",
+    "option_a": "以事实为主的课程",
+    "option_b": "涉及理论的课程",
+    "from_93": 3
+  },
+  {
+    "no": 5,
+    "text": "处理许多事情上，你会喜欢",
+    "dim": "J-P",
+    "scoring": "reverse",
+    "option_a": "凭兴所至行事",
+    "option_b": "按照计划行事",
+    "from_93": 7
+  },
+  {
+    "no": 6,
+    "text": "哪一个词语更合你心意？",
+    "dim": "T-F",
+    "scoring": "reverse",
+    "option_a": "仁慈慷慨的",
+    "option_b": "意志坚定的",
+    "from_93": 80
+  },
+  {
+    "no": 7,
+    "text": "按照程序表做事，",
+    "dim": "J-P",
+    "scoring": "positive",
+    "option_a": "合你心意",
+    "option_b": "令你感到束缚",
+    "from_93": 9
+  },
+  {
+    "no": 8,
+    "text": "你做事多数是",
+    "dim": "J-P",
+    "scoring": "reverse",
+    "option_a": "按当天心情去做，",
+    "option_b": "照拟好的程序表去做",
+    "from_93": 76
+  },
+  {
+    "no": 9,
+    "text": "你倾向",
+    "dim": "T-F",
+    "scoring": "reverse",
+    "option_a": "重视感情多于逻辑",
+    "option_b": "重视逻辑多于感情",
+    "from_93": 16
+  },
+  {
+    "no": 10,
+    "text": "与很多人一起会",
+    "dim": "E-I",
+    "scoring": "positive",
+    "option_a": "令你活力培增",
+    "option_b": "常常令你心力憔悴",
+    "from_93": 19
+  },
+  {
+    "no": 11,
+    "text": "当你有一份特别的任务，你会喜欢",
+    "dim": "J-P",
+    "scoring": "positive",
+    "option_a": "开始前小心组织计划",
+    "option_b": "边做边找须做什么",
+    "from_93": 10
+  },
+  {
+    "no": 12,
+    "text": "在大多数情况下，你会选择",
+    "dim": "J-P",
+    "scoring": "reverse",
+    "option_a": "顺其自然",
+    "option_b": "按程序表做事",
+    "from_93": 11
+  },
+  {
+    "no": 13,
+    "text": "你通常",
+    "dim": "E-I",
+    "scoring": "positive",
+    "option_a": "与人容易混熟",
+    "option_b": "比较沉静或矜持",
+    "from_93": 4
+  },
+  {
+    "no": 14,
+    "text": "哪些人会更吸引你？",
+    "dim": "S-N",
+    "scoring": "reverse",
+    "option_a": "一个思想敏捷及非常聪颖的人",
+    "option_b": "实事求是，具丰富常识的人",
+    "from_93": 24
+  },
+  {
+    "no": 15,
+    "text": "大多数人会说你是一个",
+    "dim": "E-I",
+    "scoring": "reverse",
+    "option_a": "重视自我隐私的人",
+    "option_b": "非常坦率开放的人",
+    "from_93": 12
+  },
+  {
+    "no": 16,
+    "text": "在一大群人当中，通常是",
+    "dim": "E-I",
+    "scoring": "positive",
+    "option_a": "你介绍大家认识",
+    "option_b": "别人介绍你",
+    "from_93": 14
+  },
+  {
+    "no": 17,
+    "text": "哪个是较高的赞誉，或称许为",
+    "dim": "T-F",
+    "scoring": "positive",
+    "option_a": "能干的",
+    "option_b": "富有同情心",
+    "from_93": 69
+  },
+  {
+    "no": 18,
+    "text": "你喜欢花很多的时间",
+    "dim": "E-I",
+    "scoring": "reverse",
+    "option_a": "一个人独处",
+    "option_b": "合别人在一起",
+    "from_93": 18
+  },
+  {
+    "no": 19,
+    "text": "一般来说，你和哪些人比较合得来？",
+    "dim": "S-N",
+    "scoring": "reverse",
+    "option_a": "现实的人",
+    "option_b": "富于想象力的人",
+    "from_93": 5
+  },
+  {
+    "no": 20,
+    "text": "你宁愿被人认为是一个",
+    "dim": "S-N",
+    "scoring": "positive",
+    "option_a": "实事求是的人",
+    "option_b": "机灵的人",
+    "from_93": 13
+  },
+  {
+    "no": 21,
+    "text": "哪个是较高的赞誉，或称许为？",
+    "dim": "T-F",
+    "scoring": "reverse",
+    "option_a": "一贯感性的人",
+    "option_b": "一贯理性的人",
+    "from_93": 64
+  },
+  {
+    "no": 22,
+    "text": "你会跟哪些人做朋友？",
+    "dim": "S-N",
+    "scoring": "reverse",
+    "option_a": "常提出新注意的",
+    "option_b": "脚踏实地的",
+    "from_93": 15
+  },
+  {
+    "no": 23,
+    "text": "要作决定时，你认为比较重要的是",
+    "dim": "T-F",
+    "scoring": "positive",
+    "option_a": "据事实衡量",
+    "option_b": "考虑他人的感受和意见",
+    "from_93": 78
+  },
+  {
+    "no": 24,
+    "text": "要做许多人也做的事，你比较喜欢",
+    "dim": "S-N",
+    "scoring": "positive",
+    "option_a": "按照一般认可的方法去做，",
+    "option_b": "构想一个自己的想法",
+    "from_93": 61
+  },
+  {
+    "no": 25,
+    "text": "在社交聚会中，你",
+    "dim": "E-I",
+    "scoring": "reverse",
+    "option_a": "有时感到郁闷",
+    "option_b": "常常乐在其中",
+    "from_93": 22
+  },
+  {
+    "no": 26,
+    "text": "哪一个词语更合你心意？",
+    "dim": "T-F",
+    "scoring": "positive",
+    "option_a": "实际",
+    "option_b": "多愁善感",
+    "from_93": 85
+  },
+  {
+    "no": 27,
+    "text": "你通常较喜欢的科目是",
+    "dim": "S-N",
+    "scoring": "reverse",
+    "option_a": "讲授概念和原则的",
+    "option_b": "讲授事实和数据的",
+    "from_93": 63
+  },
+  {
+    "no": 28,
+    "text": "你是否经常让",
+    "dim": "T-F",
+    "scoring": "reverse",
+    "option_a": "你的情感支配你的理智",
+    "option_b": "你的理智主宰你的情感",
+    "from_93": 6
+  }
+]

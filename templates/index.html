@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}MBTI职业性格测试 - 首页{% endblock %}
+{% block user_content %}
+<div class="hero-section">
+    <h1>🔮 MBTI职业性格测试</h1>
+    <p>2026最新版 · 发现你的性格密码</p>
+</div>
+
+<div class="login-section fade-in">
+    <h3 style="margin-bottom:16px; color:#333;">🚀 开始测试</h3>
+
+    <form action="{{ url_for('select_source') }}" method="POST">
+        <div class="form-group">
+            <label>昵称</label>
+            <input type="text" name="nickname" placeholder="请填写昵称" maxlength="12" autocomplete="off">
+        </div>
+
+        {% if tests %}
+        <div class="form-group">
+            <label>选择测试版本</label>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                {% for test in tests %}
+                <label class="version-card" style="display:block; cursor:pointer;">
+                    <input type="radio" name="test_id" value="{{ test.id }}" style="display:none;">
+                    <div class="badge {{ 'badge-green' if test.question_count <= 30 else 'badge-blue' }}">
+                        {{ '佛系点' if test.question_count <= 30 else '认真点' }}
+                    </div>
+                    <h3>{{ test.name }}</h3>
+                    <div class="meta">
+                        <span>📝 {{ test.question_count }}题</span>
+                        <span>⏱️ {{ test.estimated_time }}分钟</span>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:10px;">
+            ✨ 开始测试
+        </button>
+        {% else %}
+        <div class="empty-state">
+            <div class="icon">📭</div>
+            <p>测试暂时还没发布，请稍后再来</p>
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+<div style="padding:20px; text-align:center; color:#aaa; font-size:12px;">
+    <p>💡 提示：无对错，凭感觉，尽兴选</p>
+</div>
+<script>
+(function () {
+    var form = document.querySelector('form');
+    var cards = document.querySelectorAll('.version-card');
+    if (!cards.length) return;
+
+    function syncSelected() {
+        cards.forEach(function (card) {
+            var radio = card.querySelector('input[type="radio"]');
+            card.classList.toggle('selected', !!(radio && radio.checked));
+        });
+    }
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            var radio = card.querySelector('input[type="radio"]');
+            if (radio) { radio.checked = true; syncSelected(); }
+        });
+    });
+
+    // 提交前校验：必须选版本、昵称不能为空
+    form.addEventListener('submit', function (e) {
+        var selected = document.querySelector('input[name="test_id"]:checked');
+        var nickname = document.querySelector('input[name="nickname"]').value.trim();
+        if (!nickname) {
+            e.preventDefault();
+            alert('请先填写昵称～');
+            document.querySelector('input[name="nickname"]').focus();
+            return;
+        }
+        if (!selected) {
+            e.preventDefault();
+            alert('请选择测试版本～');
+        }
+    });
+})();
+</script>
+{% endblock %}

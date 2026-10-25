@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MBTI后台管理{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="admin-body">
+<div class="admin-layout">
+    <aside class="admin-sidebar">
+        <h2>🎛️ MBTI管理后台</h2>
+        <a href="{{ url_for('admin_dashboard') }}" class="{{ 'active' if request.endpoint == 'admin_dashboard' else '' }}">📊 概览</a>
+        <a href="{{ url_for('admin_tests') }}" class="{{ 'active' if request.endpoint == 'admin_tests' else '' }}">📝 测试管理</a>
+        <a href="{{ url_for('admin_dimensions') }}" class="{{ 'active' if request.endpoint == 'admin_dimensions' else '' }}">🎨 维度管理</a>
+        <a href="{{ url_for('admin_types') }}" class="{{ 'active' if request.endpoint == 'admin_types' else '' }}">🔮 性格类型</a>
+        <a href="{{ url_for('admin_stats') }}" class="{{ 'active' if request.endpoint == 'admin_stats' else '' }}">📈 数据统计</a>
+        <div style="margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
+            <a href="{{ url_for('index') }}" style="font-size:12px;">← 返回用户端</a>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        {% block admin_content %}{% endblock %}
+    </main>
+</div>
+</body>
+</html>

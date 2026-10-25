@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% block title %}你的结果 - {{ personality_type }}{% endblock %}
+{% block user_content %}
+<div class="poster-page fade-in">
+    <!-- 结果海报 -->
+    <div class="poster-container" id="posterContainer" style="background: linear-gradient(135deg, {{ ptype_info.get('poster_bg', '#667eea') }} 0%, #764ba2 100%);">
+        <div class="poster-header">
+            <div class="avatar-section">
+                <div class="avatar avatar-user">
+                    {% if user.get('avatar') %}
+                    <img src="{{ user.get('avatar') }}" alt="我的头像" onerror="this.style.display='none';this.parentNode.textContent='🎭'">
+                    {% elif user.get('nickname') %}
+                    {{ user.get('nickname', '?')[0] }}
+                    {% else %}
+                    🎭
+                    {% endif %}
+                </div>
+                <span class="nickname">{{ user.get('nickname') or '匿名用户' }}</span>
+            </div>
+
+            <div class="poster-type-badge">你的职业性格类型</div>
+            <div class="personality-code">{{ personality_type }}</div>
+            <div class="personality-nickname">{{ ptype_info.get('nickname', '神秘类型') }}</div>
+
+            {% if ptype_info.get('description') %}
+            <div class="personality-desc-card">
+                <div class="pd-label"><span class="pd-dot"></span>性格速览</div>
+                <p class="pd-text">{{ ptype_info.get('description', '') }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- 雷达网状图：四维度八方向（对向同色：E/I红 S/N绿 T/F蓝 J/P黄） -->
+        {% if radar %}
+        <div class="radar-section">
+            <h4>📊 维度得分 · 四维八向</h4>
+            <div class="radar-chart-wrap">
+                <svg viewBox="0 0 320 300" class="radar-svg" role="img" aria-label="MBTI四维度八方向雷达图">
+                    <!-- 网格：3圈八边形 -->
+                    {% for ring in [radar.r * 0.33, radar.r * 0.66, radar.r] %}
+                    <polygon points="
+                        {% for i in range(8) %}{{ '%.1f'|format(radar.cx + ring * ([1, 0.707, 0, -0.707, -1, -0.707, 0, 0.707][i])) }},{{ '%.1f'|format(radar.cy + ring * ([0, 0.707, 1, 0.707, 0, -0.707, -1, -0.707][i])) }}{% if not loop.last %} {% endif %}{% endfor %}"
+                        fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+                    {% endfor %}
+                    <!-- 四条对向轴线（成对同色） -->
+                    {% for ax in radar.axes %}
+                    <line x1="{{ ax.x1 }}" y1="{{ ax.y1 }}" x2="{{ ax.x2 }}" y2="{{ ax.y2 }}" stroke="{{ ax.color }}" stroke-width="1.5" opacity="0.32"/>
+                    {% endfor %}
+                    <!-- 数据多边形 -->
+                    <polygon points="{{ radar.polygon }}" fill="rgba(255,255,255,0.22)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" class="radar-polygon"/>
+                    <!-- 顶点圆点（颜色=所属轴） -->
+                    {% for p in radar.points %}
+                    <circle cx="{{ p.x }}" cy="{{ p.y }}" r="4.5" fill="{{ p.color }}" stroke="#ffffff" stroke-width="1.5" class="radar-dot"/>
+                    {% endfor %}
+                    <!-- 标签：字母为主(彩色大字)+百分比，中文标注为辅(小字) -->
+                    {% for p in radar.points %}
+                    <text x="{{ p.lx }}" y="{{ p.ly }}" text-anchor="{{ p.anchor }}" class="radar-letter" fill="{{ p.color }}">{{ p.letter }}<tspan class="radar-pct" dx="3">{{ p.pct }}%</tspan></text>
+                    <text x="{{ p.lx }}" y="{{ p.ly + 13 }}" text-anchor="{{ p.anchor }}" class="radar-subtext">{{ p.subtext }}</text>
+                    {% endfor %}
+                </svg>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- 名人区 -->
+        {% if celebs %}
+        <div class="celebrity-section">
+            <h4>🌟 他与你属于相同的性格类型</h4>
+            <div class="celebrity-cards">
+                {% for celeb in celebs %}
+                <div class="celebrity-card">
+                    <div class="celebrity-photo">
+                        <img src="{{ celeb.photo }}?v=6" alt="{{ celeb.name }}" loading="lazy"
+                             onerror="this.style.display='none';this.parentNode.textContent='⭐'">
+                    </div>
+                    <div class="celebrity-info">
+                        <div class="celebrity-name">{{ celeb.name }} <span class="celebrity-era">{{ celeb.era }}</span></div>
+                        <div class="celebrity-title">{{ celeb.title }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% elif ptype_info.get('celebrities') %}
+        <div class="celebrity-section">
+            <h4>🌟 同类型名人</h4>
+            <div style="font-size:14px;">{{ ptype_info.get('celebrities', '') }}</div>
+        </div>
+        {% endif %}
+
+        <!-- 发现自己入口 -->
+        <a href="{{ url_for('discover', ptype=personality_type) }}" class="discover-cta">
+            <span class="discover-cta-title">✨ 发现自己 · 更好前行</span>
+            <span class="discover-cta-sub">解锁{{ personality_type }}深度解析 · 学习与成长资源</span>
+            <span class="discover-cta-arrow">→</span>
+        </a>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="footer-buttons">
+        <button type="button" class="btn btn-primary btn-block" id="shareBtn">📤 分享给好友</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary btn-block">🔄 再测一次</a>
+    </div>
+
+    <!-- 裂变二维码（页面最低端，独立于海报容器之外） -->
+    <div class="invite-qr">
+        <div class="invite-qr-code">
+            <img src="{{ url_for('static', filename='qrcode/invite.png') }}" alt="扫码测同款">
+        </div>
+        <span class="invite-qr-tip">扫码测同款</span>
+    </div>
+</div>
+
+<!-- 分享弹窗 -->
+<div class="share-modal" id="shareModal" hidden>
+    <div class="share-mask" id="shareMask"></div>
+    <div class="share-panel">
+        <div class="share-head">📤 分享我的测试结果</div>
+        <div class="share-img-wrap">
+            <div class="share-loading" id="shareLoading">🎨 正在生成分享海报…</div>
+            <img id="shareImg" alt="我的结果海报" hidden>
+        </div>
+        <p class="share-tip">📱 长按图片保存到相册，即可分享到朋友圈或发给好友</p>
+        <div class="share-actions">
+            <button type="button" class="share-btn" id="copyLinkBtn">🔗 复制链接</button>
+            <button type="button" class="share-btn" id="nativeShareBtn" hidden>📲 更多方式</button>
+            <button type="button" class="share-btn ghost" id="closeShareBtn">关闭</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var modal = document.getElementById('shareModal');
+    var btn = document.getElementById('shareBtn');
+    var mask = document.getElementById('shareMask');
+    var closeBtn = document.getElementById('closeShareBtn');
+    var img = document.getElementById('shareImg');
+    var loading = document.getElementById('shareLoading');
+    var copyBtn = document.getElementById('copyLinkBtn');
+    var nativeBtn = document.getElementById('nativeShareBtn');
+    var target = document.getElementById('posterContainer');
+    var lastCanvas = null;
+
+    function openModal() {
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        if (img.dataset.done !== '1') generate();
+    }
+    function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    function generate() {
+        loading.style.display = 'block';
+        loading.textContent = '🎨 正在生成分享海报…';
+        img.hidden = true;
+
+        function doCapture() {
+            html2canvas(target, { useCORS: true, scale: 2, backgroundColor: null }).then(function (canvas) {
+                lastCanvas = canvas;
+                img.src = canvas.toDataURL('image/png');
+                img.hidden = false;
+                loading.style.display = 'none';
+                img.dataset.done = '1';
+                detectNativeShare();
+            }).catch(function () {
+                loading.textContent = '海报生成失败，试试复制链接分享';
+            });
+        }
+
+        if (window.html2canvas) {
+            doCapture();
+        } else {
+            var s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+            s.onload = doCapture;
+            s.onerror = function () {
+                loading.textContent = '海报生成失败（网络原因），可复制链接分享';
+            };
+            document.head.appendChild(s);
+        }
+    }
+
+    function detectNativeShare() {
+        try {
+            var test = new File([new Blob([''])], 't.png', { type: 'image/png' });
+            if (navigator.canShare && navigator.canShare({ files: [test] })) {
+                nativeBtn.hidden = false;
+            }
+        } catch (e) { /* 忽略 */ }
+    }
+
+    btn.addEventListener('click', openModal);
+    mask.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    copyBtn.addEventListener('click', function () {
+        var url = '{{ public_url }}';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(function () {
+                copyBtn.textContent = '✅ 已复制';
+                setTimeout(function () { copyBtn.textContent = '🔗 复制链接'; }, 1800);
+            }).catch(function () { promptCopy(); });
+        } else { promptCopy(); }
+        function promptCopy() {
+            window.prompt('长按复制链接：', url);
+        }
+    });
+
+    nativeBtn.addEventListener('click', function () {
+        if (!lastCanvas || !navigator.share) return;
+        lastCanvas.toBlob(function (blob) {
+            var file = new File([blob], 'MBTI结果海报.png', { type: 'image/png' });
+            navigator.share({
+                files: [file],
+                title: '我的MBTI职业性格测试结果',
+                text: '我的职业性格类型是 {{ personality_type }} · {{ ptype_info.get("nickname", "") }}，快来测测你是谁！'
+            }).catch(function () { /* 用户取消 */ });
+        });
+    });
+})();
+</script>
+
+<!-- 悬浮详情入口 -->
+{% if show_detail_entry %}
+<a href="{{ url_for('personality_detail', ptype=personality_type) }}" class="floating-entry" id="floatingEntry">
+    📖 查看{{ personality_type }}详情 →
+</a>
+{% endif %}
+{% endblock %}

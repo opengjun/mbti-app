@@ -1,0 +1,56 @@
+{% extends "admin_base.html" %}
+{% block title %}测试管理{% endblock %}
+{% block admin_content %}
+<div class="admin-header">
+    <h1>📝 测试管理</h1>
+</div>
+
+<div style="overflow-x:auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>测试名称</th>
+                <th>题数</th>
+                <th>用时(min)</th>
+                <th>状态</th>
+                <th>参与人次</th>
+                <th>扫码次数</th>
+                <th>发布时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tests %}
+            <tr>
+                <td>{{ t['sort_order'] or t['id'] }}</td>
+                <td><strong>{{ t['name'] }}</strong></td>
+                <td>{{ t['question_count'] }}</td>
+                <td>{{ t['estimated_time'] }}</td>
+                <td>
+                    {% if t['status'] == 1 %}
+                        <span class="badge-sm active">已发布</span>
+                    {% else %}
+                        <span class="badge-sm inactive">未发布</span>
+                    {% endif %}
+                </td>
+                <td>{{ t['submit_count'] }}</td>
+                <td>{{ t['scan_count'] }}</td>
+                <td>{{ t.get('publish_time') or '-' }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="8" style="text-align:center; color:#aaa; padding:40px;">暂无测试数据</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top:24px; padding:20px; background:#fff; border-radius:12px;">
+    <h3 style="margin-bottom:16px;">📖 说明</h3>
+    <ul style="font-size:13px; color:#666; line-height:2;">
+        <li>测试名称：对用户展示的版本名，如"认真点"(93题)/"佛系点"(28题)</li>
+        <li>状态：未发布 = 仅保存；已发布 = 正式上线</li>
+        <li>参与人次 = 提交次数；扫码次数 = 通过扫码进入的次数</li>
+        <li>当前为预览版本，完整编辑功能待下一阶段开发</li>
+    </ul>
+</div>
+{% endblock %}

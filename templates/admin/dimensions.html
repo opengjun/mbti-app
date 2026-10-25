@@ -1,0 +1,49 @@
+{% extends "admin_base.html" %}
+{% block title %}维度管理{% endblock %}
+{% block admin_content %}
+<div class="admin-header">
+    <h1>🎨 维度管理</h1>
+</div>
+
+<div style="overflow-x:auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>维度名称</th>
+                <th>正向 · A → 元素</th>
+                <th>正向 · B → 元素</th>
+                <th>展示样式</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in dims %}
+            <tr>
+                <td>{{ d['sort_order'] or d['id'] }}</td>
+                <td><strong>{{ d['name'] }}</strong></td>
+                <td style="font-family:monospace;">{{ d['element_a'] }} ({{ d['element_a'].upper() }})</td>
+                <td style="font-family:monospace;">{{ d['element_b'] }} ({{ d['element_b'].upper() }})</td>
+                <td>
+                    <span style="display:inline-block; padding:4px 12px; border-radius:10px; background:{{ styles.get(d['style'], {}).get('bg', '#ddd') }}; color:#fff; font-size:12px;">
+                        {{ styles.get(d['style'], {}).get('label', d['style']) }}
+                    </span>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" style="text-align:center; color:#aaa; padding:40px;">暂无维度数据</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top:24px; padding:20px; background:#fff; border-radius:12px;">
+    <h3 style="margin-bottom:16px;">📖 计分规则（文档定义）</h3>
+    <div style="font-size:13px; color:#666; line-height:2;">
+        <p><strong>正向计分</strong>（默认）：选A → 给element_a加分，选B → 给element_b加分</p>
+        <p><strong>反向计分</strong>：选A → 给element_b加分，选B → 给element_a加分</p>
+        <p><strong>维度得分</strong>：该维度下 X = 代表元素得分, Y = H - X (H为该维度题目总数)</p>
+        <p><strong>代表元素</strong>：若 X ≥ Y → 取X对应元素；若 X ＜ Y → 取Y对应元素</p>
+        <p><strong>最终类型</strong>：四个维度各取一个代表字母 → 拼成4字母类型 (如 ENFJ)</p>
+    </div>
+</div>
+{% endblock %}

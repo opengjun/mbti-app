@@ -1,0 +1,51 @@
+{% extends "admin_base.html" %}
+{% block title %}性格类型管理{% endblock %}
+{% block admin_content %}
+<div class="admin-header">
+    <h1>🔮 性格类型管理</h1>
+</div>
+
+<div style="overflow-x:auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>类型代码</th>
+                <th>昵称</th>
+                <th>首次详情</th>
+                <th>背景色</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in types %}
+            <tr>
+                <td>{{ t['sort_order'] or t['id'] }}</td>
+                <td><strong style="font-family:monospace; letter-spacing:2px;">{{ t['code'] }}</strong></td>
+                <td>{{ t.get('nickname') or '-' }}</td>
+                <td>
+                    {% if t.get('detail_first_show') == 1 %}
+                        <span class="badge-sm active">是</span>
+                    {% else %}
+                        <span class="badge-sm inactive">否</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <span style="display:inline-block; width:16px; height:16px; border-radius:4px; background:{{ t.get('poster_bg', '#667eea') }};"></span>
+                    {{ t.get('poster_bg', '-') }}
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" style="text-align:center; color:#aaa; padding:40px;">暂无性格类型数据</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top:24px; padding:20px; background:#fff; border-radius:12px;">
+    <h3 style="margin-bottom:12px;">✨ 关于"首次详情"</h3>
+    <p style="font-size:13px; color:#666; line-height:1.8;">
+        文档定义：<strong>"是"</strong>= 首次测试即可看到详情悬浮入口；<strong>"否"</strong>= 需第二次及以后才能看到入口。
+        当前默认全部设为"否"，根据你的需求后续可批量修改或后台编辑。
+    </p>
+</div>
+{% endblock %}

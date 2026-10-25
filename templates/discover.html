@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}发现自己 - {{ personality_type }}{% endblock %}
+{% block user_content %}
+{% set accent = ptype_info.get('poster_bg', '#667eea') %}
+<div class="discover-page fade-in" style="--accent: {{ accent }};">
+
+    <!-- 顶部横幅 -->
+    <div class="discover-hero">
+        <div class="discover-hero-bg" style="background: linear-gradient(135deg, {{ accent }} 0%, #764ba2 100%);"></div>
+        <div class="discover-hero-content">
+            <div class="discover-character">
+            <img src="/static/avatars/{{ personality_type }}.svg" alt="{{ ptype_info.get('nickname', '') }}" onerror="this.style.display='none'">
+        </div>
+        <div class="discover-code">{{ personality_type }} <span>·</span> {{ ptype_info.get('nickname', '') }}</div>
+        <p class="discover-intro">{{ ptype_info.get('description', '') }}</p>
+    </div>
+</div>
+
+<div class="discover-body">
+        {% if not sections %}
+        <div class="section-card"><div class="section-body"><p>解析内容即将上线，敬请期待。</p></div></div>
+        {% endif %}
+
+        {% for sec in sections %}
+        <div class="section-card" id="sec-{{ loop.index }}">
+            <div class="section-head">
+                <span class="section-icon">{{ sec.icon }}</span>
+                <span class="section-title">{{ sec.title }}</span>
+                <span class="section-no">{{ '%02d' % loop.index }}</span>
+            </div>
+            <div class="section-body">{{ sec.html | safe }}</div>
+
+            {% if '适合的职业' in sec.title %}
+            <div class="inline-links">
+                <div class="inline-links-label"><span class="mini-icon">💼</span>为你匹配的工作机会</div>
+                {% for link in links.job_links %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-icon">{{ link.icon }}</span>
+                    <span class="link-text">
+                        <span class="link-title">{{ link.title }}</span>
+                        <span class="link-desc">{{ link.desc }}</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if '个人发展建议' in sec.title %}
+            <div class="inline-links">
+                <div class="inline-links-label"><span class="mini-icon">📚</span>为你推荐的成长资源</div>
+                {% for link in links.study_links %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener" class="link-card">
+                    <span class="link-icon">{{ link.icon }}</span>
+                    <span class="link-text">
+                        <span class="link-title">{{ link.title }}</span>
+                        <span class="link-desc">{{ link.desc }}</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <!-- 结尾：同类人社区（自然收尾CTA） -->
+        <div class="community-banner">
+            <div class="community-banner-bg" style="background: linear-gradient(135deg, {{ accent }} 0%, #764ba2 100%);"></div>
+            <div class="community-banner-content">
+                <div class="community-title">🤝 找到你的同类人</div>
+                <div class="community-sub">与 {{ personality_type }} 伙伴互相督促 · 一起成长</div>
+                <div class="community-actions">
+                    <a href="{{ links.growth_links[1].url }}" target="_blank" rel="noopener" class="community-btn zhihu">
+                        <span class="community-btn-icon">💡</span><span>知乎 · 交流与成长</span>
+                    </a>
+                    <a href="{{ links.growth_links[0].url }}" target="_blank" rel="noopener" class="community-btn douban">
+                        <span class="community-btn-icon">📖</span><span>豆瓣 · 同类人社区</span>
+                    </a>
+                    <a href="https://search.bilibili.com/all?keyword={{ personality_type }}%20人格%20成长" target="_blank" rel="noopener" class="community-btn bili">
+                        <span class="community-btn-icon">📺</span><span>B站 · 视频社群</span>
+                    </a>
+                    <a href="https://www.xiaohongshu.com/search_result?keyword={{ personality_type }}%20人格" target="_blank" rel="noopener" class="community-btn xhs">
+                        <span class="community-btn-icon">📒</span><span>小红书 · 话题笔记</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="discover-footnote">※ 链接由 {{ personality_type }} 类型定制生成，点击后将打开对应平台</p>
+    </div>
+
+    <div class="footer-buttons">
+        <a href="{{ url_for('result', ptype=personality_type) }}" class="btn btn-secondary btn-block">← 返回结果海报</a>
+        <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">🔄 再测一次</a>
+    </div>
+</div>
+{% endblock %}

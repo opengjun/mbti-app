@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}性格详情 - {{ personality_type }}{% endblock %}
+{% block user_content %}
+<div class="detail-page fade-in">
+    <div class="detail-header" style="background: linear-gradient(135deg, {{ ptype_info.get('poster_bg', '#667eea') }} 0%, #764ba2 100%);">
+        <h2>{{ personality_type }}</h2>
+        <div class="nick">{{ ptype_info.get('nickname', '') }}</div>
+        <p style="margin-top:16px; opacity:0.9; font-size:14px; line-height:1.8;">{{ ptype_info.get('description', '') }}</p>
+    </div>
+
+    {% if ptype_info.get('detail_content') %}
+        <!-- 后台编辑的HTML详情内容 -->
+        <div class="detail-section">
+            {{ ptype_info.get('detail_content') | safe }}
+        </div>
+    {% else %}
+        <!-- 默认详情内容（占位，后续可替换） -->
+        <div class="detail-section">
+            <h3>🧩 个性特征描述</h3>
+            <p style="line-height:1.8;">
+                这里是 {{ personality_type }} 类型的详细解释。<br>
+                <em>（请在后台管理中编辑此类型的"性格详情"内容，或等待系统更新文案）</em>
+            </p>
+        </div>
+
+        <div class="detail-section">
+            <h3>💪 工作中的优势</h3>
+            <p style="line-height:1.8;">
+                待补充...
+            </p>
+        </div>
+
+        <div class="detail-section">
+            <h3>⚠️ 可能存在的盲点</h3>
+            <p style="line-height:1.8;">
+                待补充...
+            </p>
+        </div>
+
+        <div class="detail-section">
+            <h3>💼 适合的职业方向</h3>
+            <p style="line-height:1.8;">
+                待补充...
+            </p>
+        </div>
+
+        <div class="detail-section">
+            <h3>🌱 个人发展建议</h3>
+            <p style="line-height:1.8;">
+                待补充...
+            </p>
+        </div>
+    {% endif %}
+
+    <div class="footer-buttons">
+        <a href="{{ url_for('index') }}" class="btn btn-primary btn-block">🔄 再测一次</a>
+    </div>
+</div>
+{% endblock %}

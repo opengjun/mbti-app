@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}答题提示 - {{ test.name }}{% endblock %}
+{% block user_content %}
+<div class="intro-page fade-in">
+    <div class="intro-icon">🧠</div>
+    <h2 style="margin-bottom:12px;">准备好了吗？</h2>
+    <p style="color:#888; font-size:14px;">{{ test.name }} · 约 {{ test.estimated_time }} 分钟</p>
+
+    <div class="intro-tips">
+        <div class="tip-item">
+            <div class="tip-num">1</div>
+            <div>
+                <strong>无对错</strong><br>
+                <span style="font-size:13px; color:#888;">凭感觉选就对了</span>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">2</div>
+            <div>
+                <strong>尽兴选</strong><br>
+                <span style="font-size:13px; color:#888;">不要纠结，第一反应最准</span>
+            </div>
+        </div>
+        <div class="tip-item">
+            <div class="tip-num">3</div>
+            <div>
+                <strong>3秒自动跳转</strong><br>
+                <span style="font-size:13px; color:#888;">或点击"朕，知道了"</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ url_for('test_page', test_id=test.id) }}" class="btn btn-primary" style="width:200px;">
+        朕，知道了 →
+    </a>
+</div>
+{% endblock %}

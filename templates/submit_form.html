@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}选填资料{% endblock %}
+{% block user_content %}
+<div class="submit-form-page fade-in">
+    <div style="text-align:center; margin-bottom:30px;">
+        <div style="font-size:48px;">🎯</div>
+        <h2 style="margin:12px 0;">哪个描述更符合你？</h2>
+        <p style="color:#888; font-size:13px;">均为选填，不填也能提交</p>
+    </div>
+
+    <form action="{{ url_for('submit_test') }}" method="POST">
+        <!-- 性别 -->
+        <div class="form-section">
+            <h3>性别 <span class="label-tip">选填</span></h3>
+            <div class="option-grid">
+                {% for g in gender_options %}
+                <label>
+                    <input type="radio" name="gender" value="{{ g.value }}">
+                    <div class="opt-content">
+                        <div class="opt-label">{{ g.label }}</div>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 职龄 -->
+        <div class="form-section">
+            <h3>职龄 <span class="label-tip">选填</span></h3>
+            <div class="option-grid">
+                {% for c in career_options %}
+                <label>
+                    <input type="radio" name="career" value="{{ c.value }}">
+                    <div class="opt-content">
+                        <div class="opt-label">{{ c.label }}</div>
+                        <div class="opt-desc">{{ c.desc }}</div>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 学历 -->
+        <div class="form-section">
+            <h3>学历 <span class="label-tip">选填</span></h3>
+            <div class="option-grid">
+                {% for e in education_options %}
+                <label>
+                    <input type="radio" name="education" value="{{ e.value }}">
+                    <div class="opt-content">
+                        <div class="opt-label">{{ e.label }}</div>
+                        <div class="opt-desc">{{ e.desc }}</div>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:30px; padding:16px;">
+            🔍 查看真相 →
+        </button>
+    </form>
+</div>
+{% endblock %}

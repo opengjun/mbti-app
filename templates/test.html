@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}答题中 - {{ test.name }}{% endblock %}
+{% block user_content %}
+<div class="question-page fade-in">
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+
+    <div class="question-nav" id="questionNav" hidden>
+        <button type="button" class="nav-prev-btn" onclick="prevQuestion()">← 上一题</button>
+    </div>
+
+    <div id="questionArea">
+        <!-- 动态加载 -->
+    </div>
+</div>
+
+<script>
+const questions = {{ questions | tojson }};
+const styles = {{ styles | tojson }};
+let currentIndex = 0;
+let autoTimer = null;
+const answers = {};  // qid -> 'A'/'B'，用于回上一题时回显选中
+
+function renderQuestion() {
+    // 控制上一题按钮：首题隐藏
+    document.getElementById('questionNav').hidden = (currentIndex === 0);
+
+    if (currentIndex >= questions.length) {
+        // 完成所有题目
+        document.getElementById('questionArea').innerHTML = `
+            <div style="text-align:center; padding:60px 20px;">
+                <div style="font-size:64px; margin-bottom:20px;">🎉</div>
+                <h2>答题完成！</h2>
+                <p style="color:#888; margin:12px 0 24px;">来填个小资料吧</p>
+                <a href="{{ url_for('finish_questions') }}" class="btn btn-primary" style="width:200px;">继续 →</a>
+            </div>`;
+        return;
+    }
+
+    const q = questions[currentIndex];
+    const progress = ((currentIndex + 1) / questions.length * 100).toFixed(0);
+    document.getElementById('progressFill').style.width = progress + '%';
+
+    const styleClass = q.style || 'red';
+    document.getElementById('questionArea').innerHTML = `
+        <div class="question-card ${styleClass} question-animate" key="${q.id}">
+            <div class="question-no">第 ${currentIndex + 1} / ${questions.length} 题</div>
+            <div class="question-text">${q.question_text}</div>
+        </div>
+        <div class="options">
+            <button class="option-btn" onclick="selectAnswer('${q.id}', 'A', this)">
+                <span class="option-label">A</span>
+                <span>${q.option_a}</span>
+            </button>
+            <button class="option-btn" onclick="selectAnswer('${q.id}', 'B', this)">
+                <span class="option-label">B</span>
+                <span>${q.option_b}</span>
+            </button>
+        </div>
+    `;
+
+    // 回显之前选中的答案（回上一题时）
+    if (answers[q.id]) {
+        const idx = answers[q.id] === 'A' ? 0 : 1;
+        const btns = document.querySelectorAll('.option-btn');
+        if (btns[idx]) btns[idx].classList.add('selected');
+    }
+}
+
+function prevQuestion() {
+    if (currentIndex === 0) return;
+    // 取消尚未触发的自动跳转
+    if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+    currentIndex--;
+    renderQuestion();
+}
+
+function selectAnswer(qid, answer, btn) {
+    // 高亮选中
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+
+    // 记录选择，便于回上一题时回显
+    answers[qid] = answer;
+
+    // 提交答案
+    fetch('/submit_answer', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({question_id: qid, answer: answer})
+    });
+
+    // 清除之前的自动跳转定时器
+    if (autoTimer) clearTimeout(autoTimer);
+
+    // 3秒自动跳转 (文档要求)
+    autoTimer = setTimeout(() => {
+        currentIndex++;
+        renderQuestion();
+    }, 800);
+}
+
+// 初始化
+renderQuestion();
+</script>
+{% endblock %}

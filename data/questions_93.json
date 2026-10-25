@@ -1,0 +1,932 @@
+[
+  {
+    "no": 1,
+    "dim": "J-P",
+    "text": "当你要外出一整天，你会",
+    "scoring": "positive",
+    "option_a": "计划你要做什么和在什么时候做",
+    "option_b": "说去就去",
+    "q28_no": 1,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 2,
+    "dim": "J-P",
+    "text": "你认为自己是一个",
+    "scoring": "positive",
+    "option_a": "较为有条理的人",
+    "option_b": "较为随兴所至的人",
+    "q28_no": 3,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 3,
+    "dim": "S-N",
+    "text": "假如你是一位老师，你会选教",
+    "scoring": "positive",
+    "option_a": "以事实为主的课程",
+    "option_b": "涉及理论的课程",
+    "q28_no": 4,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 4,
+    "dim": "E-I",
+    "text": "你通常",
+    "scoring": "positive",
+    "option_a": "与人容易混熟",
+    "option_b": "比较沉静或矜持",
+    "q28_no": 13,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 5,
+    "dim": "S-N",
+    "text": "一般来说，你和哪些人比较合得来？",
+    "scoring": "positive",
+    "option_a": "现实的人",
+    "option_b": "富于想象力的人",
+    "q28_no": 19,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 6,
+    "dim": "T-F",
+    "text": "你是否经常让",
+    "scoring": "reverse",
+    "option_a": "你的情感支配你的理智",
+    "option_b": "你的理智主宰你的情感",
+    "q28_no": 28,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 7,
+    "dim": "J-P",
+    "text": "处理许多事情上，你会喜欢",
+    "scoring": "reverse",
+    "option_a": "凭兴所至行事",
+    "option_b": "按照计划行事",
+    "q28_no": 5,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 8,
+    "dim": "E-I",
+    "text": "你是否",
+    "scoring": "positive",
+    "option_a": "容易让人了解",
+    "option_b": "难于让人了解",
+    "q28_no": 2,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 9,
+    "dim": "J-P",
+    "text": "按照程序表做事，",
+    "scoring": "positive",
+    "option_a": "合你心意",
+    "option_b": "令你感到束缚",
+    "q28_no": 7,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 10,
+    "dim": "J-P",
+    "text": "当你有一份特别的任务，你会喜欢",
+    "scoring": "positive",
+    "option_a": "开始前小心组织计划",
+    "option_b": "边做边找须做什么",
+    "q28_no": 11,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 11,
+    "dim": "J-P",
+    "text": "在大多数情况下，你会选择",
+    "scoring": "reverse",
+    "option_a": "顺其自然",
+    "option_b": "按程序表做事",
+    "q28_no": 12,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 12,
+    "dim": "E-I",
+    "text": "大多数人会说你是一个",
+    "scoring": "reverse",
+    "option_a": "重视自我隐私的人",
+    "option_b": "非常坦率开放的人",
+    "q28_no": 15,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 13,
+    "dim": "S-N",
+    "text": "你宁愿被人认为是一个",
+    "scoring": "positive",
+    "option_a": "实事求是的人",
+    "option_b": "机灵的人",
+    "q28_no": 20,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 14,
+    "dim": "E-I",
+    "text": "在一大群人当中，通常是",
+    "scoring": "positive",
+    "option_a": "你介绍大家认识",
+    "option_b": "别人介绍你",
+    "q28_no": 16,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 15,
+    "dim": "S-N",
+    "text": "你会跟哪些人做朋友？",
+    "scoring": "reverse",
+    "option_a": "常提出新注意的",
+    "option_b": "脚踏实地的",
+    "q28_no": 22,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 16,
+    "dim": "T-F",
+    "text": "你倾向",
+    "scoring": "reverse",
+    "option_a": "重视感情多于逻辑",
+    "option_b": "重视逻辑多于感情",
+    "q28_no": 9,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 17,
+    "dim": "J-P",
+    "text": "你比较喜欢",
+    "scoring": "reverse",
+    "option_a": "坐观事情发展才作计划",
+    "option_b": "很早就作计划",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 18,
+    "dim": "E-I",
+    "text": "你喜欢花很多的时间",
+    "scoring": "reverse",
+    "option_a": "一个人独处",
+    "option_b": "合别人在一起",
+    "q28_no": 18,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 19,
+    "dim": "E-I",
+    "text": "与很多人一起会",
+    "scoring": "positive",
+    "option_a": "令你活力培增",
+    "option_b": "常常令你心力憔悴",
+    "q28_no": 10,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 20,
+    "dim": "J-P",
+    "text": "你比较喜欢",
+    "scoring": "positive",
+    "option_a": "很早便把约会、社交聚集等事情安排妥当，",
+    "option_b": "无拘无束，看当时有什么好玩就做什么",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 21,
+    "dim": "J-P",
+    "text": "计划一个旅程时，你较喜欢",
+    "scoring": "reverse",
+    "option_a": "大部分的时间都是跟当天的感觉行事，",
+    "option_b": "事先知道大部分的日子会做什么",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 22,
+    "dim": "E-I",
+    "text": "在社交聚会中，你",
+    "scoring": "reverse",
+    "option_a": "有时感到郁闷",
+    "option_b": "常常乐在其中",
+    "q28_no": 25,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 23,
+    "dim": "E-I",
+    "text": "你通常",
+    "scoring": "positive",
+    "option_a": "和别人容易混熟",
+    "option_b": "趋向自处一隅",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 24,
+    "dim": "S-N",
+    "text": "哪些人会更吸引你？",
+    "scoring": "reverse",
+    "option_a": "一个思想敏捷及非常聪颖的人",
+    "option_b": "实事求是，具丰富常识的人",
+    "q28_no": 14,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 25,
+    "dim": "J-P",
+    "text": "在日常工作中，你会",
+    "scoring": "reverse",
+    "option_a": "颇为喜欢处理迫使你分秒必争的突发",
+    "option_b": "通常预先计划，以免要在压力下工作",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 26,
+    "dim": "E-I",
+    "text": "你认为别人一般",
+    "scoring": "reverse",
+    "option_a": "要花很长时间才认识你",
+    "option_b": "用很短的时间便认识你",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 27,
+    "dim": "E-I",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "注重隐私",
+    "option_b": "坦率开放",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 28,
+    "dim": "J-P",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "预先安排的",
+    "option_b": "无计划的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 29,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "抽象",
+    "option_b": "具体",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 30,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "温柔",
+    "option_b": "坚定",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 31,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "思考",
+    "option_b": "感受",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 32,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "事实",
+    "option_b": "意念",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 33,
+    "dim": "J-P",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "冲动",
+    "option_b": "决定",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 34,
+    "dim": "E-I",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "热衷",
+    "option_b": "文静",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 35,
+    "dim": "E-I",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "文静",
+    "option_b": "外向",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 36,
+    "dim": "J-P",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "有系统",
+    "option_b": "随意",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 37,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "理论",
+    "option_b": "肯定",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 38,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "敏感",
+    "option_b": "公正",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 39,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "令人信服",
+    "option_b": "感人的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 40,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "声明",
+    "option_b": "概念",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 41,
+    "dim": "J-P",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "不受约束",
+    "option_b": "预先安排",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 42,
+    "dim": "E-I",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "矜持",
+    "option_b": "健谈",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 43,
+    "dim": "J-P",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "有条不紊",
+    "option_b": "不拘小节",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 44,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "意念",
+    "option_b": "实况",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 45,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "同情怜悯",
+    "option_b": "远见",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 46,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "利益",
+    "option_b": "祝福",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 47,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "务实的",
+    "option_b": "理论的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 48,
+    "dim": "E-I",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "朋友不多",
+    "option_b": "朋友众多",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 49,
+    "dim": "J-P",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "有系统",
+    "option_b": "即兴",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 50,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "富想象的",
+    "option_b": "以事论事",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 51,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "亲切的",
+    "option_b": "客观的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 52,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "客观的",
+    "option_b": "热情的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 53,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "建造",
+    "option_b": "发明",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 54,
+    "dim": "E-I",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "文静",
+    "option_b": "爱合群",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 55,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "理论",
+    "option_b": "事实",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 56,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "富同情",
+    "option_b": "合逻辑",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 57,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "具分析力",
+    "option_b": "多愁善感",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 58,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "合情合理",
+    "option_b": "令人着迷",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 59,
+    "dim": "J-P",
+    "text": "当你要在一个星期内完成一个大项目，你在开始的时候会",
+    "scoring": "positive",
+    "option_a": "把要做的不同工作依次列出，",
+    "option_b": "马上动工",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 60,
+    "dim": "E-I",
+    "text": "在社交场合中，你经常会感到",
+    "scoring": "reverse",
+    "option_a": "与某些人很难打开话匣儿和保持对话，或是",
+    "option_b": "与多数人都能从容地长谈",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 61,
+    "dim": "S-N",
+    "text": "要做许多人也做的事，你比较喜欢",
+    "scoring": "positive",
+    "option_a": "按照一般认可的方法去做，",
+    "option_b": "构想一个自己的想法",
+    "q28_no": 24,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 62,
+    "dim": "E-I",
+    "text": "你刚认识的朋友能否说出你的兴趣？",
+    "scoring": "positive",
+    "option_a": "马上可以，",
+    "option_b": "要待他们真正了解你之后才可以",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 63,
+    "dim": "S-N",
+    "text": "你通常较喜欢的科目是",
+    "scoring": "reverse",
+    "option_a": "讲授概念和原则的",
+    "option_b": "讲授事实和数据的",
+    "q28_no": 27,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 64,
+    "dim": "T-F",
+    "text": "哪个是较高的赞誉，或称许为？",
+    "scoring": "reverse",
+    "option_a": "一贯感性的人",
+    "option_b": "一贯理性的人",
+    "q28_no": 21,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 65,
+    "dim": "J-P",
+    "text": "你认为按照程序表做事",
+    "scoring": "reverse",
+    "option_a": "有时是需要的，但一般来说你不大喜欢这样做",
+    "option_b": "大多数情况下是有帮助而且是你喜欢做的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 66,
+    "dim": "E-I",
+    "text": "和一群人在一起，你通常会选",
+    "scoring": "reverse",
+    "option_a": "跟你很熟悉的个别人谈话，",
+    "option_b": "参与大伙的谈话",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 67,
+    "dim": "E-I",
+    "text": "在社交聚会上，你会",
+    "scoring": "positive",
+    "option_a": "是说话很多的一个",
+    "option_b": "让别人多说话",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 68,
+    "dim": "J-P",
+    "text": "把周末期间要完成的事列成清单，这个主意会",
+    "scoring": "positive",
+    "option_a": "合你意，",
+    "option_b": "使你提不起劲",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 69,
+    "dim": "T-F",
+    "text": "哪个是较高的赞誉，或称许为",
+    "scoring": "positive",
+    "option_a": "能干的",
+    "option_b": "富有同情心",
+    "q28_no": 17,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 70,
+    "dim": "J-P",
+    "text": "你通常喜欢",
+    "scoring": "positive",
+    "option_a": "事先安排你的社交约会，",
+    "option_b": "随兴之所至做事",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 71,
+    "dim": "J-P",
+    "text": "总的说来，要做一个大型作业时，你会选",
+    "scoring": "reverse",
+    "option_a": "边做边想该做什么，",
+    "option_b": "首先把工作按步细分",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 72,
+    "dim": "E-I",
+    "text": "你能否滔滔不绝地与人聊天",
+    "scoring": "reverse",
+    "option_a": "只限于跟你有共同兴趣的人，",
+    "option_b": "几乎跟任何人都可以",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 73,
+    "dim": "S-N",
+    "text": "你会",
+    "scoring": "positive",
+    "option_a": "跟随一些证明有效的方法，或是",
+    "option_b": "分析还有什么毛病，及针对尚未解决的难题",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 74,
+    "dim": "S-N",
+    "text": "为乐趣而阅读时，你会",
+    "scoring": "reverse",
+    "option_a": "喜欢奇特或创新的表达方式，",
+    "option_b": "喜欢作者直话直说",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 75,
+    "dim": "T-F",
+    "text": "你宁愿替哪一类上司（或者老师）工作？",
+    "scoring": "reverse",
+    "option_a": "天性淳良，但常常前后不一的，",
+    "option_b": "言词尖锐但永远合乎逻辑的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 76,
+    "dim": "J-P",
+    "text": "你做事多数是",
+    "scoring": "reverse",
+    "option_a": "按当天心情去做，",
+    "option_b": "照拟好的程序表去做",
+    "q28_no": 8,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 77,
+    "dim": "E-I",
+    "text": "你是否",
+    "scoring": "positive",
+    "option_a": "可以和任何人按需求从容地交谈，或是",
+    "option_b": "只是对某些人或在某种情况下才可以畅所欲言",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 78,
+    "dim": "T-F",
+    "text": "要作决定时，你认为比较重要的是",
+    "scoring": "positive",
+    "option_a": "据事实衡量",
+    "option_b": "考虑他人的感受和意见",
+    "q28_no": 23,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 79,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "想象的",
+    "option_b": "真实的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 80,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "仁慈慷慨的",
+    "option_b": "意志坚定的",
+    "q28_no": 6,
+    "q28_scoring": "reverse"
+  },
+  {
+    "no": 81,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "公正的",
+    "option_b": "有关怀心",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 82,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "制作",
+    "option_b": "设计",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 83,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "可能性",
+    "option_b": "必然性",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 84,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "温柔",
+    "option_b": "力量",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 85,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "实际",
+    "option_b": "多愁善感",
+    "q28_no": 26,
+    "q28_scoring": "positive"
+  },
+  {
+    "no": 86,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "制造",
+    "option_b": "创造",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 87,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "新颖的",
+    "option_b": "已知的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 88,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "同情",
+    "option_b": "分析",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 89,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "坚持己见",
+    "option_b": "温柔有爱心",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 90,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "具体的",
+    "option_b": "抽象的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 91,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "reverse",
+    "option_a": "全心投入",
+    "option_b": "有决心的",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 92,
+    "dim": "T-F",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "能干",
+    "option_b": "仁慈",
+    "q28_no": null,
+    "q28_scoring": null
+  },
+  {
+    "no": 93,
+    "dim": "S-N",
+    "text": "哪一个词语更合你心意？",
+    "scoring": "positive",
+    "option_a": "实际",
+    "option_b": "创新",
+    "q28_no": null,
+    "q28_scoring": null
+  }
+]
