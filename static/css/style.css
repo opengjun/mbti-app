@@ -613,7 +613,13 @@ body {
 .detail-section p, .detail-section li {
     font-size: 14px;
     line-height: 1.8;
-    color: #555;
+    letter-spacing: 0.5px;
+    color: #4a4a4a;
+}
+
+.detail-section p {
+    margin-bottom: 12px;
+    text-align: justify;
 }
 
 .detail-section ul { padding-left: 20px; }
@@ -948,13 +954,14 @@ body {
     line-height: 1;
 }
 .section-body p {
-    font-size: 13.5px; line-height: 1.95; color: #4a4f5c;
-    margin: 0 0 8px; text-align: justify;
+    font-size: 13.5px; line-height: 1.8; color: #4a4a4a;
+    margin: 0 0 12px; letter-spacing: 0.5px; text-align: justify;
 }
 .section-body ul { margin: 0; padding-left: 4px; list-style: none; }
 .section-body li {
     position: relative;
-    font-size: 13.5px; line-height: 1.9; color: #4a4f5c;
+    font-size: 13.5px; line-height: 1.9; color: #4a4a4a;
+    letter-spacing: 0.5px;
     padding-left: 18px; margin-bottom: 7px;
 }
 .section-body li::before {
@@ -1195,12 +1202,13 @@ body {
 
 /* ==================== 结果页：简介卡片（重排版） ==================== */
 .personality-desc-card {
-    margin: 18px auto 0;
-    max-width: 302px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 24px 0 0;
+    padding: 16px;
     background: rgba(255,255,255,0.14);
     border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 14px;
-    padding: 12px 15px 13px;
+    border-radius: 16px;
     backdrop-filter: blur(8px);
     text-align: left;
 }

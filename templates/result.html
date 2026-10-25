@@ -7,12 +7,9 @@
         <div class="poster-header">
             <div class="avatar-section">
                 <div class="avatar avatar-user">
-                    {% if user.get('avatar') %}
-                    <img src="{{ user.get('avatar') }}" alt="我的头像"
+                    <img src="{{ url_for('static', filename='avatars/' + personality_type + '.svg') }}"
+                         alt="{{ personality_type }} 性格头像"
                          onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/default_avatar.png') }}';">
-                    {% else %}
-                    <img src="{{ url_for('static', filename='images/default_avatar.png') }}" alt="默认头像">
-                    {% endif %}
                 </div>
                 <span class="nickname">{{ user.get('nickname') or '匿名用户' }}</span>
             </div>
@@ -24,7 +21,7 @@
             {% if ptype_info.get('detail_content') %}
             <div class="personality-desc-card">
                 <div class="pd-label"><span class="pd-dot"></span>性格速览</div>
-                <p class="pd-text">{{ ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim | truncate(60, true) }}</p>
+                <p class="pd-text">{{ ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim | truncate(70, true) }}</p>
             </div>
             {% endif %}
         </div>
