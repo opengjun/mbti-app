@@ -43,10 +43,11 @@ def select_source():
     session['user_id'] = user_id
     session['nickname'] = nickname
     session['avatar'] = avatar
+    
     test_id = request.form.get('test_id')
-if not test_id:
-    return redirect(url_for('index')) # 如果没拿到 test_id，就退回到首页，不要报错
-return redirect(url_for('intro', test_id=test_id))
+    if not test_id:
+        return redirect(url_for('index'))  # 如果没拿到 test_id，就退回到首页，不要报错
+    return redirect(url_for('intro', test_id=test_id))
   
 
 @app.route('/intro/<int:test_id>')
