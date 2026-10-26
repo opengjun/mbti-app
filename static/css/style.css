@@ -15,6 +15,10 @@ body {
     position: relative;
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
 }
+body.result-page .container {
+    min-height: auto;
+    padding-bottom: 0;
+}
 
 .page-header {
     padding: 16px;
@@ -191,6 +195,13 @@ body {
 .version-card .badge-blue { background: #d1ecf1; color: #0c5460; }
 
 .version-card h3 { font-size: 18px; margin-bottom: 8px; color: #333; }
+.version-card .meta-time {
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8c93a8;
+    white-space: nowrap;
+}
 
 .version-card .meta {
     display: flex;
@@ -410,7 +421,7 @@ body {
 
 .poster-container {
     border-radius: 24px;
-    padding: 40px 24px;
+    padding: 40px 24px 24px;
     color: #fff;
     margin-bottom: 20px;
     position: relative;
@@ -435,7 +446,7 @@ body {
     align-items: center;
     gap: 12px;
     justify-content: center;
-    margin-bottom: 2px;
+    margin-bottom: 0;
 }
 
 .avatar {
@@ -463,7 +474,7 @@ body {
     letter-spacing: 1px;
     line-height: 1.4;
     color: rgba(255,255,255,0.62);
-    margin: 0 0 2px;
+    margin: 20px 0 10px;
 }
 
 .personality-code {
@@ -607,16 +618,26 @@ body {
 
 /* 底部按钮 */
 .footer-buttons {
-    padding: 10px 0 20px;
-    display: block;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .footer-buttons .btn-block {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 320px;
-    margin: 0 auto 12px auto;
+    max-width: 300px;
+    height: 48px;
+    padding: 0 16px;
+    margin: 0 0 12px;
     box-sizing: border-box;
+    line-height: 1;
+    text-align: center;
 }
+.footer-buttons .btn-block:first-child { margin-top: 12px; }
+.footer-buttons .btn-block:last-child { margin-bottom: 0; }
 
 .btn-block {
     display: block;
@@ -822,7 +843,9 @@ body {
 .discover-cta {
     display: block;
     position: relative;
-    margin-top: 22px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 22px 0 12px;
     padding: 16px 18px;
     background: rgba(255,255,255,0.95);
     border-radius: 16px;
@@ -1257,8 +1280,8 @@ body {
     width: auto;
     max-width: 320px;
     box-sizing: border-box;
-    margin: 16px auto 24px auto;
-    padding: 4px 0;
+    margin: 16px auto 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;

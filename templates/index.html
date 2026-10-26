@@ -22,14 +22,7 @@
                 {% for test in tests %}
                 <label class="version-card" style="display:block; cursor:pointer;">
                     <input type="radio" name="test_id" value="{{ test.id }}" style="display:none;">
-                    <div class="badge {{ 'badge-green' if test.question_count <= 30 else 'badge-blue' }}">
-                        {{ '佛系点' if test.question_count <= 30 else '认真点' }}
-                    </div>
-                    <h3>{{ test.name }}</h3>
-                    <div class="meta">
-                        <span>📝 {{ test.question_count }}题</span>
-                        <span>⏱️ {{ test.estimated_time }}分钟</span>
-                    </div>
+                    <h3>{{ test.name }}<span class="meta-time">⏱️ {{ test.estimated_time }}分钟</span></h3>
                 </label>
                 {% endfor %}
             </div>

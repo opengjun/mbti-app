@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}你的结果 - {{ personality_type }}{% endblock %}
+{% block body_class %}result-page{% endblock %}
 {% block user_content %}
 <div class="poster-page fade-in">
     <!-- 结果海报 -->
@@ -21,7 +22,8 @@
             {% if ptype_info.get('detail_content') %}
             <div class="personality-desc-card">
                 <div class="pd-label"><span class="pd-dot"></span>性格速览</div>
-                <p class="pd-text">{{ ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim | truncate(50, true) }}</p>
+                {% set desc_text = ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim %}
+                <p class="pd-text">{{ desc_text.split('。')[0] }}。</p>
             </div>
             {% endif %}
         </div>
