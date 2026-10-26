@@ -251,6 +251,15 @@ def result(ptype):
                 dimension_scores = json.loads(last['dimension_scores'])
             except:
                 pass
+    # 无测试数据时（如直接打开结果链接），按性格代码生成默认维度值，保证雷达图始终展示
+    if not dimension_scores and len(ptype) == 4:
+        for i, (a, b) in enumerate([('E', 'I'), ('S', 'N'), ('T', 'F'), ('J', 'P')]):
+            score_a, score_b = (70, 30) if ptype[i] == a else (30, 70)
+            dimension_scores.append({
+                'dim_name': f'{a}-{b}', 'element_a': a, 'element_b': b,
+                'score_a': score_a, 'score_b': score_b,
+                'total': score_a + score_b,
+            })
     radar = build_radar_points(dimension_scores)
 
     # 名人数据

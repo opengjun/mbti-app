@@ -21,7 +21,7 @@
             {% if ptype_info.get('detail_content') %}
             <div class="personality-desc-card">
                 <div class="pd-label"><span class="pd-dot"></span>性格速览</div>
-                <p class="pd-text">{{ ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim | truncate(70, true) }}</p>
+                <p class="pd-text">{{ ptype_info.get('detail_content', '').split('</h3>', 1)[-1] | striptags | trim | truncate(50, true) }}</p>
             </div>
             {% endif %}
         </div>
@@ -58,20 +58,23 @@
         </div>
         {% endif %}
 
-        <!-- 名人区 -->
+        <!-- 同类型名人 -->
         {% if celebs %}
         <div class="celebrity-section">
-            <h4>🌟 他与你属于相同的性格类型</h4>
+            <h4>🌟 与你同类型的名人</h4>
             <div class="celebrity-cards">
-                {% for celeb in celebs %}
+                {% for celeb in celebs[:2] %}
+                {% set avatar = celeb.get('avatar') or celeb.get('photo') or '' %}
+                {% set avatar_src = avatar if avatar.startswith('/') or avatar.startswith('http') else url_for('static', filename='celebs/' + avatar) %}
+                {% set achievement = celeb.get('achievement') or celeb.get('title') or '' %}
                 <div class="celebrity-card">
                     <div class="celebrity-photo">
-                        <img src="{{ celeb.photo }}?v=6" alt="{{ celeb.name }}" loading="lazy"
+                        <img src="{{ avatar_src }}" alt="{{ celeb.get('name', '') }}" loading="lazy"
                              onerror="this.style.display='none';this.parentNode.textContent='⭐'">
                     </div>
                     <div class="celebrity-info">
-                        <div class="celebrity-name">{{ celeb.name }} <span class="celebrity-era">{{ celeb.era }}</span></div>
-                        <div class="celebrity-title">{{ celeb.title }}</div>
+                        <div class="celebrity-name">{{ celeb.get('name', '') }}</div>
+                        {% if achievement %}<div class="celebrity-title">{{ achievement }}</div>{% endif %}
                     </div>
                 </div>
                 {% endfor %}
@@ -79,8 +82,8 @@
         </div>
         {% elif ptype_info.get('celebrities') %}
         <div class="celebrity-section">
-            <h4>🌟 同类型名人</h4>
-            <div style="font-size:14px;">{{ ptype_info.get('celebrities', '') }}</div>
+            <h4>🌟 与你同类型的名人</h4>
+            <div class="celebrity-fallback">{{ ptype_info.get('celebrities', '') }}</div>
         </div>
         {% endif %}
 
@@ -90,20 +93,23 @@
             <span class="discover-cta-sub">解锁{{ personality_type }}深度解析 · 学习与成长资源</span>
             <span class="discover-cta-arrow">→</span>
         </a>
+
+        <!-- 操作按钮（海报容器内） -->
+        <div class="footer-buttons">
+            <button type="button" class="btn btn-primary btn-block" id="shareBtn">📤 分享给好友</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary btn-block">🔄 再测一次</a>
+        </div>
     </div>
 
-    <!-- 操作按钮 -->
-    <div class="footer-buttons">
-        <button type="button" class="btn btn-primary btn-block" id="shareBtn">📤 分享给好友</button>
-        <a href="{{ url_for('index') }}" class="btn btn-secondary btn-block">🔄 再测一次</a>
-    </div>
-
-    <!-- 裂变二维码（页面最低端，独立于海报容器之外） -->
+    <!-- 页面最底部：扫码测同款 -->
     <div class="invite-qr">
         <div class="invite-qr-code">
             <img src="{{ url_for('static', filename='qrcode/invite.png') }}" alt="扫码测同款">
         </div>
-        <span class="invite-qr-tip">扫码测同款</span>
+        <div class="invite-qr-text">
+            <span class="invite-qr-tip">扫码测同款</span>
+            <span class="invite-qr-sub">发现你的职业性格</span>
+        </div>
     </div>
 </div>
 

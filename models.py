@@ -3,7 +3,7 @@ import os
 from config import DB_PATH, DEFAULT_DIMENSIONS
 
 def get_conn():
-    conn = sqlite3.connect('/tmp/mbti.db')
+    conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -220,7 +220,7 @@ def get_dimension_by_id(dim_id):
 # ---------- 测试相关 ----------
 def get_tests():
     conn = get_conn()
-    rows = conn.execute('''SELECT t.*, COUNT(q.id) as question_count
+    rows = conn.execute('''SELECT t.*, COUNT(DISTINCT q.question_no) as question_count
         FROM tests t LEFT JOIN questions q ON t.id = q.test_id
         GROUP BY t.id ORDER BY t.sort_order ASC, t.id ASC''').fetchall()
     conn.close()
@@ -241,7 +241,10 @@ def get_test_questions(test_id):
     conn = get_conn()
     rows = conn.execute('''SELECT q.*, d.name as dim_name, d.element_a, d.element_b, d.style
         FROM questions q JOIN dimensions d ON q.dimension_id = d.id
-        WHERE q.test_id=? ORDER BY q.question_no ASC''', (test_id,)).fetchall()
+        WHERE q.test_id=? AND q.id IN (
+            SELECT MAX(id) FROM questions WHERE test_id=? GROUP BY question_no
+        )
+        ORDER BY q.question_no ASC''', (test_id, test_id)).fetchall()
     conn.close()
     return [dict(r) for r in rows]
 

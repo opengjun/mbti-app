@@ -1,4 +1,4 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+﻿﻿* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -257,35 +257,18 @@ body {
     display: flex;
     justify-content: flex-start;
 }
-.question-nav[hidden] { display: none; }
 .nav-prev-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    background: #f3f4f7;
+    background: none;
     border: none;
-    border-radius: 999px;
-    color: #6b7280;
+    color: #888;
     font-size: 13px;
-    line-height: 1;
     cursor: pointer;
-    padding: 6px 12px 6px 8px;
+    padding: 4px 6px;
     font-family: inherit;
-    transition: background-color 0.18s ease, color 0.18s ease;
+    transition: color 0.15s;
 }
-.nav-prev-btn:hover { background: #e6e8ee; color: #4b5563; }
-.nav-prev-btn:active { background: #dcdfe8; }
-.nav-prev-btn:focus-visible { outline: 2px solid #667eea; outline-offset: 2px; }
-.nav-prev-icon {
-    width: 14px;
-    height: 14px;
-    display: block;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
+.nav-prev-btn:hover { color: #667eea; }
+.nav-prev-btn:active { color: #5554a0; }
 
 .progress-bar {
     height: 6px;
@@ -452,7 +435,7 @@ body {
     align-items: center;
     gap: 12px;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 2px;
 }
 
 .avatar {
@@ -472,11 +455,15 @@ body {
 
 .poster-type-badge {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
     font-size: 12px;
-    margin-bottom: 16px;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.62);
+    margin: 0 0 2px;
 }
 
 .personality-code {
@@ -613,23 +600,22 @@ body {
 .detail-section p, .detail-section li {
     font-size: 14px;
     line-height: 1.8;
-    letter-spacing: 0.5px;
-    color: #4a4a4a;
-}
-
-.detail-section p {
-    margin-bottom: 12px;
-    text-align: justify;
+    color: #555;
 }
 
 .detail-section ul { padding-left: 20px; }
 
 /* 底部按钮 */
 .footer-buttons {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 10px 0 20px;
+    display: block;
+}
+.footer-buttons .btn-block {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 12px auto;
+    box-sizing: border-box;
 }
 
 .btn-block {
@@ -784,51 +770,52 @@ body {
 .celebrity-cards {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 .celebrity-card {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+    min-width: 0;
     background: rgba(255,255,255,0.15);
     border-radius: 14px;
-    padding: 10px 12px;
+    padding: 12px 14px;
 }
 .celebrity-photo {
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
     border-radius: 50%;
     overflow: hidden;
     background: rgba(255,255,255,0.3);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.28), 0 3px 10px rgba(0,0,0,0.22);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 26px;
 }
 .celebrity-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.celebrity-info { flex: 1; min-width: 0; }
+.celebrity-info { flex: 1; min-width: 0; text-align: left; }
 .celebrity-name {
     font-size: 15px;
     font-weight: 600;
     color: #fff;
-}
-.celebrity-era {
-    font-size: 11px;
-    font-weight: 400;
-    opacity: 0.7;
-    margin-left: 4px;
+    line-height: 1.4;
 }
 .celebrity-title {
-    font-size: 12px;
-    opacity: 0.85;
-    margin-top: 3px;
+    font-size: 11px;
+    opacity: 0.72;
+    margin-top: 4px;
     line-height: 1.5;
+}
+.celebrity-fallback {
+    font-size: 13px;
+    line-height: 1.7;
+    opacity: 0.88;
 }
 
 /* ==================== 发现自己CTA ==================== */
@@ -954,14 +941,13 @@ body {
     line-height: 1;
 }
 .section-body p {
-    font-size: 13.5px; line-height: 1.8; color: #4a4a4a;
-    margin: 0 0 12px; letter-spacing: 0.5px; text-align: justify;
+    font-size: 13.5px; line-height: 1.95; color: #4a4f5c;
+    margin: 0 0 8px; text-align: justify;
 }
 .section-body ul { margin: 0; padding-left: 4px; list-style: none; }
 .section-body li {
     position: relative;
-    font-size: 13.5px; line-height: 1.9; color: #4a4a4a;
-    letter-spacing: 0.5px;
+    font-size: 13.5px; line-height: 1.9; color: #4a4f5c;
     padding-left: 18px; margin-bottom: 7px;
 }
 .section-body li::before {
@@ -1203,8 +1189,9 @@ body {
 /* ==================== 结果页：简介卡片（重排版） ==================== */
 .personality-desc-card {
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
-    margin: 24px 0 0;
+    margin: 18px 0 0;
     padding: 16px;
     background: rgba(255,255,255,0.14);
     border: 1px solid rgba(255,255,255,0.18);
@@ -1231,7 +1218,7 @@ body {
 .pd-text {
     margin: 7px 0 0;
     font-size: 13.5px;
-    line-height: 1.95;
+    line-height: 1.6;
     text-align: justify;
     color: rgba(255,255,255,0.95);
     letter-spacing: 0.3px;
@@ -1267,19 +1254,26 @@ body {
 
 /* ==================== 结果页：裂变二维码（紧凑页脚风） ==================== */
 .invite-qr {
-    margin: 24px auto 8px;
+    width: auto;
+    max-width: 320px;
+    box-sizing: border-box;
+    margin: 16px auto 24px auto;
+    padding: 4px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
 }
 .invite-qr-code {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background: #fff;
+    border: 1px solid #f0f0f4;
     border-radius: 6px;
     padding: 2px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     flex: none;
 }
 .invite-qr-code img {
@@ -1288,13 +1282,19 @@ body {
     display: block;
     border-radius: 4px;
 }
+.invite-qr-text { text-align: left; }
 .invite-qr-tip {
-    font-size: 11px;
-    color: #aaa;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8a8f99;
     line-height: 1.4;
-    max-width: 180px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
+.invite-qr-sub {
+    display: block;
+    font-size: 10px;
+    color: #b3b7c0;
+    margin-top: 1px;
+    line-height: 1.4;
 }
 

@@ -12,7 +12,7 @@
             <img src="/static/avatars/{{ personality_type }}.svg" alt="{{ ptype_info.get('nickname', '') }}" onerror="this.style.display='none'">
         </div>
         <div class="discover-code">{{ personality_type }} <span>·</span> {{ ptype_info.get('nickname', '') }}</div>
-        <p class="discover-intro">{{ ptype_info.get('description', '') }}</p>
+        <p class="discover-intro" style="display: none;">{{ ptype_info.get('description', '') }}</p>
     </div>
 </div>
 

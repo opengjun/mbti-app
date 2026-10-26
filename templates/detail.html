@@ -5,7 +5,7 @@
     <div class="detail-header" style="background: linear-gradient(135deg, {{ ptype_info.get('poster_bg', '#667eea') }} 0%, #764ba2 100%);">
         <h2>{{ personality_type }}</h2>
         <div class="nick">{{ ptype_info.get('nickname', '') }}</div>
-        <p style="margin-top:16px; opacity:0.9; font-size:14px; line-height:1.8;">{{ ptype_info.get('description', '') }}</p>
+        <p style="display:none; margin-top:16px; opacity:0.9; font-size:14px; line-height:1.8;">{{ ptype_info.get('description', '') }}</p>
     </div>
 
     {% if ptype_info.get('detail_content') %}
