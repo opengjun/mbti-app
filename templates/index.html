@@ -11,13 +11,13 @@
 
     <form action="{{ url_for('select_source') }}" method="POST">
         <div class="form-group">
-            <label>昵称</label>
-            <input type="text" name="nickname" placeholder="请填写昵称" maxlength="12" autocomplete="off">
+            <label>昵称（选填）</label>
+            <input type="text" name="nickname" placeholder="选填，不填默认“测试用户”" maxlength="12" autocomplete="off">
         </div>
 
         {% if tests %}
         <div class="form-group">
-            <label>选择测试版本</label>
+            <label>选择测试版本（点击直接开始）</label>
             <div style="display:flex; flex-direction:column; gap:10px;">
                 {% for test in tests %}
                 <label class="version-card" style="display:block; cursor:pointer;">
@@ -28,9 +28,6 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block" style="margin-top:10px;">
-            ✨ 开始测试
-        </button>
         {% else %}
         <div class="empty-state">
             <div class="icon">📭</div>
@@ -58,20 +55,16 @@
     cards.forEach(function (card) {
         card.addEventListener('click', function () {
             var radio = card.querySelector('input[type="radio"]');
-            if (radio) { radio.checked = true; syncSelected(); }
+            if (!radio) return;
+            radio.checked = true;
+            syncSelected();
+            form.requestSubmit();
         });
     });
 
-    // 提交前校验：必须选版本、昵称不能为空
+    // 提交前校验：必须选择版本（点击版本卡片时已自动选中）
     form.addEventListener('submit', function (e) {
         var selected = document.querySelector('input[name="test_id"]:checked');
-        var nickname = document.querySelector('input[name="nickname"]').value.trim();
-        if (!nickname) {
-            e.preventDefault();
-            alert('请先填写昵称～');
-            document.querySelector('input[name="nickname"]').focus();
-            return;
-        }
         if (!selected) {
             e.preventDefault();
             alert('请选择测试版本～');

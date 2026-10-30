@@ -1,4 +1,4 @@
-﻿﻿* { box-sizing: border-box; margin: 0; padding: 0; }
+﻿﻿﻿﻿* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -274,7 +274,7 @@ body.result-page .container {
     color: #888;
     font-size: 13px;
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 4px 0;
     font-family: inherit;
     transition: color 0.15s;
 }

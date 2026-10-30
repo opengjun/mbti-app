@@ -8,11 +8,11 @@ from models import (
     init_db, get_tests, get_test_by_id, get_test_questions,
     get_dimensions, get_dimension_by_id,
     get_personality_types, get_personality_type,
-    create_user, get_user, update_user, get_user_test_count, get_user_detail_view_count,
+    create_user, get_user, get_user_test_count, get_user_detail_view_count,
     save_test_result, get_test_results, record_detail_view, get_user_latest_result,
 )
 from scoring import calculate_scores
-from config import STYLES, GENDER_OPTIONS, CAREER_OPTIONS, EDUCATION_OPTIONS, PUBLIC_URL
+from config import STYLES, PUBLIC_URL
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'mbti-secret-key-2026')
@@ -89,18 +89,7 @@ def submit_answer():
 
 @app.route('/finish_questions', methods=['GET', 'POST'])
 def finish_questions():
-    """完成答题 → 进入选填资料页"""
-    test_id = session.get('current_test_id')
-    if not test_id:
-        return redirect(url_for('index'))
-    return render_template('submit_form.html', test_id=test_id,
-                          gender_options=GENDER_OPTIONS,
-                          career_options=CAREER_OPTIONS,
-                          education_options=EDUCATION_OPTIONS)
-
-@app.route('/submit_test', methods=['POST'])
-def submit_test():
-    """最终提交 → 计分 → 结果"""
+    """完成答题 → 直接计分 → 结果海报页（跳过选填资料页）"""
     test_id = session.get('current_test_id')
     user_id = session.get('user_id')
     answers = session.get('answers', {})
@@ -108,23 +97,13 @@ def submit_test():
     if not test_id or not user_id or not answers:
         return redirect(url_for('index'))
 
-    # 获取选填项
-    gender = request.form.get('gender', '')
-    career = request.form.get('career', '')
-    education = request.form.get('education', '')
-
-    # 更新用户资料
-    update_user(user_id, gender=gender, career_stage=career, education=education)
-
-    # 计分
+    # 计分并保存结果
     scores_result = calculate_scores(test_id, answers)
-
-    # 保存结果
     save_test_result(user_id, test_id, answers,
-                    scores_result['dimension_scores'],
-                    scores_result['personality_type'])
+                     scores_result['dimension_scores'],
+                     scores_result['personality_type'])
 
-    # 清除session中的答题状态
+    # 清除 session 中的答题状态
     session.pop('answers', None)
     session.pop('current_test_id', None)
 

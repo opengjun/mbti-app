@@ -8,9 +8,6 @@
 
     <div class="question-nav" id="questionNav" hidden>
         <button type="button" class="nav-prev-btn" onclick="prevQuestion()" aria-label="上一题">
-            <svg class="nav-prev-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
             <span>上一题</span>
         </button>
     </div>
@@ -37,8 +34,8 @@ function renderQuestion() {
             <div style="text-align:center; padding:60px 20px;">
                 <div style="font-size:64px; margin-bottom:20px;">🎉</div>
                 <h2>答题完成！</h2>
-                <p style="color:#888; margin:12px 0 24px;">来填个小资料吧</p>
-                <a href="{{ url_for('finish_questions') }}" class="btn btn-primary" style="width:200px;">继续 →</a>
+                <div style="margin:20px 0 24px;"></div>
+                <a href="{{ url_for('finish_questions') }}" class="btn btn-primary" style="width:200px;">查看真相</a>
             </div>`;
         return;
     }
